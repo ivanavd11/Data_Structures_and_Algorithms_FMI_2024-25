@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+int main() 
+{
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
+    
+    int n,k;
+    cin>>n>>k;
+    std::vector <int> v(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>v[i];
+    }
+    
+    std::vector <std::pair <int, int>> newVector(n);
+    for(int i=0;i<n;i++)
+    {
+        newVector[i].first = v[i];
+        newVector[i].second = i;
+    }
+    
+    std::sort(newVector.begin(), newVector.end());
+   
+    int left = 0;
+    int right = n-1;
+    
+    while(left<right)
+    {
+        if(newVector[left].first + newVector[right].first <k)
+        {
+            left++;
+        }
+        else if(newVector[left].first + newVector[right].first >k)
+        {
+            right--;
+        }
+        else
+        {
+            cout<<newVector[left].second<<" "<<newVector[right].second;
+            break;
+        }
+    }
+    
+    return 0;
+}
