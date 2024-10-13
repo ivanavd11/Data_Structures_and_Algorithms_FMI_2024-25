@@ -1,0 +1,37 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int q;
+    cin>>q;
+    int size;
+    string str ={};
+    int result = 0;
+    for(int i=0; i<q;i++)
+    {
+        cin>>size;
+        cin>>str;
+    
+        
+        for(int j=1;j<size;j++)
+        {
+            if(str[j-1]==str[j])
+            {
+                result++;
+            }
+        }
+        
+        cout<<result<<'\n';
+        result=0;
+        
+    }
+    return 0;
+}
