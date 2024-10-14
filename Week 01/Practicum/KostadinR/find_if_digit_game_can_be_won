@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool canAliceWin(vector<int>& nums) 
+    {
+        int size = nums.size();
+
+        int sumDouble=0;
+        int sumSingle = 0;
+
+        for(int i=0;i<size;i++)
+        {
+            if(nums[i]<10)
+            {
+                sumSingle +=nums[i];
+            }
+            else
+            {
+                sumDouble +=nums[i];
+            }
+        }
+
+        if(sumSingle!=sumDouble)
+        {
+            return true;
+        }
+        return false;
+    }
+};
