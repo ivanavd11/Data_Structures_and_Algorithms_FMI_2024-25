@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums) {
+        int n = nums.size();
+        
+        // Поставяме всички елементи, които са <= 0 или > n, на стойност n + 1
+        for (int i = 0; i < n; i++) {
+            if (nums[i] <= 0 || nums[i] > n) {
+                nums[i] = n + 1;
+            }
+        }
+
+        // Маркираме присъстващите числа чрез индекси
+        for (int i = 0; i < n; i++) {
+            int num = abs(nums[i]);
+            if (num <= n) {
+                nums[num - 1] = -abs(nums[num - 1]);
+            }
+        }
+
+        // Търсим първия положителен индекс, който не е бил маркиран
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > 0) {
+                return i + 1;
+            }
+        }
+
+        // Ако всички числа от 1 до n са били намерени, то липсващото число е n + 1
+        return n + 1;
+    }
+};
