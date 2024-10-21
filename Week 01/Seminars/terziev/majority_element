@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) 
+    {
+        int size =nums.size();
+        sort(nums.begin(), nums.end());
+        // Понеже елементът се среща повече от n/2 пъти,
+        // след сортиране той винаги ще се намира в средата на масива
+        return nums[size / 2];
+    }
+};
