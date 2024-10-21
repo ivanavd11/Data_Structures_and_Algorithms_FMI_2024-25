@@ -1,0 +1,40 @@
+class Solution {
+public:
+    // DFS функция за маркиране на текущия остров като посетен
+    void dfs(vector<vector<char>>& grid, int i, int j) {
+        // Проверяваме дали сме извън границите на решетката или сме на вода
+        if (i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size() || grid[i][j] == '0') {
+            return;
+        }
+        
+        // Маркираме текущата клетка като посетена
+        grid[i][j] = '0';
+        
+        // Извикваме DFS за съседните клетки (горе, долу, ляво, дясно)
+        dfs(grid, i + 1, j); // надолу
+        dfs(grid, i - 1, j); // нагоре
+        dfs(grid, i, j + 1); // надясно
+        dfs(grid, i, j - 1); // наляво
+    }
+    
+    // Основната функция за броене на островите
+    int numIslands(vector<vector<char>>& grid) {
+        if (grid.empty()) return 0;
+        
+        int num_islands = 0;
+        
+        // Обхождаме всяка клетка в решетката
+        for (int i = 0; i < grid.size(); ++i) {
+            for (int j = 0; j < grid[0].size(); ++j) {
+                if (grid[i][j] == '1') {
+                    // Намерили сме нов остров, затова увеличаваме броя
+                    num_islands++;
+                    // Извикваме DFS за маркиране на целия остров
+                    dfs(grid, i, j);
+                }
+            }
+        }
+        
+        return num_islands;
+    }
+};
