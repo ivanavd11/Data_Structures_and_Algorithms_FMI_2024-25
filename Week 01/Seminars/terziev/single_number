@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+
+        int size = nums.size();
+        int number = 0;
+        while(size!=0)
+        {
+            int digit = nums[size-1];
+            number = number^digit;
+            size--;
+        }
+
+        return number;
+    }
+};
