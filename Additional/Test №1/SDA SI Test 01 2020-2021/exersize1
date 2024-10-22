@@ -1,0 +1,80 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int sizeFirst;
+    cin>>sizeFirst;
+    vector<int> first(sizeFirst);
+    int number;
+    for(int i=0;i<sizeFirst; i++)
+    {
+        cin>>number;
+        bool isFind = false;
+        for(int j=0;j<sizeFirst; j++)
+        {
+            if(first[j]==number)
+            {
+                isFind=true;
+                break;
+            }
+        }
+        if(!isFind)
+        {
+            first[i]=number;
+        }
+    }
+    
+    int sizeSecond;
+    cin>>sizeSecond;
+    vector<int> second(sizeSecond);
+    for(int i=0;i<sizeSecond;i++)
+    {
+       cin>>number;
+        bool isFind = false;
+        for(int j=0;j<sizeSecond; j++)
+        {
+            if(second[j]==number)
+            {
+                isFind=true;
+                break;
+            }
+        }
+        if(!isFind)
+        {
+            second[i]=number;
+        }
+    }
+    
+    int sum =0;
+    
+    sort(first.begin(), first.end());
+    sort(second.begin(), second.end());
+    
+    for(int i=0;i<sizeFirst;i++)
+    {
+        bool find = false;
+        for(int j=0;j<sizeSecond;j++)
+        {
+            if(first[i] == second[j])
+            {
+                find = true;
+                break;
+            }
+        }
+        if(find)
+        {
+            sum +=first[i];
+        }
+    }
+    
+    cout<<sum;
+    return 0;
+}
