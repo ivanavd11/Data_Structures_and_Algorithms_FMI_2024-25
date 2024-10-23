@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+struct Team {
+    long long index;    
+    long long members;  
+    long long opponents;
+    long long score;  
+};
+
+bool compare(const Team &a, const Team &b) {
+    if (a.score != b.score) {
+        return a.score > b.score; 
+    }
+    return a.opponents < b.opponents; 
+}
+
+int main() {
+    long long size;
+    cin >> size;
+    
+    vector<Team> teams(size);
+    
+    for (long long i = 0; i < size; i++) {
+        long long X, Y;
+        cin >> X >> Y;
+        teams[i] = {i + 1, X, Y, (X) / Y};
+    }
+    
+    sort(teams.begin(), teams.end(), compare);
+    
+    for (long long i = 0; i < size; i++) {
+        cout << teams[i].index << " ";
+    }
+    
+    return 0;
+}
