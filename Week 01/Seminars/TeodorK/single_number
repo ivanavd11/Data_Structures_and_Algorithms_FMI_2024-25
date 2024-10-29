@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int size = nums.size() - 1;
+        int result = 0;
+        while(size>=0)
+        {
+            result^=nums[size];
+            size--;
+        }
+        
+        return result;
+    }
+};
